@@ -1,4 +1,3 @@
-from django.contrib import messages
 from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
@@ -41,7 +40,6 @@ def login_view(request):
                     )
                 else:
                     login(request, user)
-                    messages.success(request, f'Добро пожаловать, {user.full_name}!')
                     return redirect('cabinet')
 
     return render(request, 'accounts/login.html', {'form': form})
@@ -66,7 +64,6 @@ def cabinet(request):
 @require_http_methods(['POST'])
 def logout_view(request):
     logout(request)
-    messages.info(request, 'Вы вышли из системы.')
     return redirect('login')
 
 
@@ -79,10 +76,6 @@ def register(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(
-                request,
-                'Регистрация успешно завершена. Теперь вы можете войти в систему.',
-            )
             return redirect('login')
     else:
         form = RegistrationForm()

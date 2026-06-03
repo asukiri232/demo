@@ -1,0 +1,27 @@
+{% load static %}
+<section class="slider" aria-label="Галерея помещений">
+    <div class="slider__viewport">
+        <div class="slider__track">
+            <div class="slider__slide is-active">
+                <img src="{% static 'images/slider/slide-1.png' %}" alt="Банкетный зал" width="800" height="450">
+            </div>
+            <div class="slider__slide">
+                <img src="{% static 'images/slider/slide-2.png' %}" alt="Ресторан" width="800" height="450">
+            </div>
+            <div class="slider__slide">
+                <img src="{% static 'images/slider/slide-3.png' %}" alt="Летняя веранда" width="800" height="450">
+            </div>
+            <div class="slider__slide">
+                <img src="{% static 'images/slider/slide-4.png' %}" alt="Закрытая веранда" width="800" height="450">
+            </div>
+        </div>
+        <button type="button" class="slider__btn slider__btn--prev" aria-label="Предыдущий слайд">‹</button>
+        <button type="button" class="slider__btn slider__btn--next" aria-label="Следующий слайд">›</button>
+    </div>
+    <div class="slider__dots" role="tablist" aria-label="Выбор слайда">
+        <button type="button" class="slider__dot is-active" aria-label="Слайд 1" aria-selected="true"></button>
+        <button type="button" class="slider__dot" aria-label="Слайд 2"></button>
+        <button type="button" class="slider__dot" aria-label="Слайд 3"></button>
+        <button type="button" class="slider__dot" aria-label="Слайд 4"></button>
+    </div>
+</section>
