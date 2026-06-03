@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация завершена — Банкетам.Нет{% endblock %}
+
+{% block content %}
+<div class="card success-text">
+    <h2>Регистрация завершена</h2>
+    <p>Данные успешно сохранены в базе данных.</p>
+    <p><a href="{% url 'login' %}">Перейти ко входу</a></p>
+</div>
+{% endblock %}

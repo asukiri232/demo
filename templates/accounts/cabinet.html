@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Личный кабинет — Банкетам.Нет{% endblock %}
+
+{% block main_class %}main--wide{% endblock %}
+
+{% block content %}
+<div class="cabinet">
+    <div class="card cabinet-welcome">
+        <div class="cabinet-welcome__text">
+            <h2>Личный кабинет</h2>
+            <p class="cabinet-greeting">Здравствуйте, <strong>{{ profile.full_name }}</strong>!</p>
+            <p class="cabinet-subtitle">Здесь отображаются ваши персональные данные и сведения об учётной записи.</p>
+        </div>
+        <form method="post" action="{% url 'logout' %}" class="cabinet-logout-form">
+            {% csrf_token %}
+            <button type="submit" class="btn btn--outline">Выйти</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h3 class="card-section-title">Персональные данные</h3>
+        <dl class="profile-list">
+            <div class="profile-list__row">
+                <dt>ФИО</dt>
+                <dd>{{ profile.full_name }}</dd>
+            </div>
+            <div class="profile-list__row">
+                <dt>Логин</dt>
+                <dd>{{ profile.username }}</dd>
+            </div>
+            <div class="profile-list__row">
+                <dt>E-mail</dt>
+                <dd><a href="mailto:{{ profile.email }}">{{ profile.email }}</a></dd>
+            </div>
+            <div class="profile-list__row">
+                <dt>Телефон</dt>
+                <dd><a href="tel:{{ profile.phone }}">{{ profile.phone }}</a></dd>
+            </div>
+        </dl>
+    </div>
+
+    <div class="card">
+        <h3 class="card-section-title">Учётная запись</h3>
+        <dl class="profile-list">
+            <div class="profile-list__row">
+                <dt>Дата регистрации</dt>
+                <dd>{{ profile.date_joined|date:"d.m.Y H:i" }}</dd>
+            </div>
+            <div class="profile-list__row">
+                <dt>Последний вход</dt>
+                <dd>
+                    {% if profile.last_login %}
+                    {{ profile.last_login|date:"d.m.Y H:i" }}
+                    {% else %}
+                    —
+                    {% endif %}
+                </dd>
+            </div>
+        </dl>
+    </div>
+
+    <div class="card card--muted">
+        <h3 class="card-section-title">Бронирования</h3>
+        <p class="cabinet-placeholder">
+            Раздел бронирования залов и помещений будет доступен на следующих этапах разработки портала.
+        </p>
+    </div>
+</div>
+{% endblock %}
