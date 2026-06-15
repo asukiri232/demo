@@ -81,7 +81,3 @@ def register(request):
         form = RegistrationForm()
 
     return render(request, 'accounts/register.html', {'form': form})
-
-
-def register_success(request):
-    return render(request, 'accounts/register_success.html')
